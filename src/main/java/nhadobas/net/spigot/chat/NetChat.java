@@ -10,6 +10,7 @@ import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
 import net.md_5.bungee.api.event.ChatEvent;
+import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.PluginManager;
@@ -35,6 +36,16 @@ public class NetChat extends Command implements Listener {
 
 	this.input.remove(s.getName());
 	s.sendMessage( new TextComponent (ChatColor.DARK_RED + "NetChat focus toggled off."));
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PostLoginEvent e) {
+        ProxiedPlayer s = e.getPlayer();
+        if(!this.input.contains(s.getName())) {
+            this.input.add(s.getName());
+            s.sendMessage( new TextComponent (ChatColor.DARK_GREEN + "NetChat focus toggled on."));
+            return;
+        }
     }
 
     @EventHandler
