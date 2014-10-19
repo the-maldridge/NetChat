@@ -45,7 +45,7 @@ public class NetChat extends Command implements Listener {
 		e.setCancelled(true);
 		for(ProxiedPlayer pl : this.pasta.getProxy().getPlayers())
 		    if(((pl instanceof ProxiedPlayer)) && (pl.hasPermission("netchat.use")))
-			pl.sendMessage(new TextComponent(ChatColor.DARK_RED + "[" + ChatColor.BLUE + s.getServer().getInfo().getName() + ChatColor.DARK_RED + "] " + ChatColor.GOLD + s.getName() + ChatColor.RED + ": " + e.getMessage()));
+			pl.sendMessage(new TextComponent(ChatColor.DARK_RED + "[" + ChatColor.BLUE + s.getServer().getInfo().getName() + ChatColor.DARK_RED + "] " + ChatColor.GOLD + s.getName() + ChatColor.RESET + ": " + e.getMessage()));
 		return;
 	    }
 	    return;
